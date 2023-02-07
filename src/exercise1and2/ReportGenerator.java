@@ -22,6 +22,4 @@ public class ReportGenerator extends Classroom {
         bufferedWriter.write("Cea mai mica nota: " + minStudentGrade.getName() + " " + minStudentGrade.getGrade());
         bufferedWriter.close();
     }
-
-
 }

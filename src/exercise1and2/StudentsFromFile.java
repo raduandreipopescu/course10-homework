@@ -29,5 +29,4 @@ public class StudentsFromFile {
         String[] partOfReadLine = readLine.split(Pattern.quote("|"));
         return new StudentGrade(partOfReadLine[0], partOfReadLine[1], Integer.parseInt(partOfReadLine[2]));
     }
-
 }
