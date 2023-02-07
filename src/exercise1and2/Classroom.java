@@ -1,4 +1,4 @@
-package exercise1;
+package exercise1and2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,10 @@ public class Classroom {
 
     public Classroom(List<StudentGrade> studentGradeList) {
         this.studentGradeList = studentGradeList;
+    }
+
+    public List<StudentGrade> getStudentGradeList() {
+        return studentGradeList;
     }
 
     public List<Integer> getGradesForDiscipline(String discipline) {
@@ -73,5 +77,25 @@ public class Classroom {
             }
         }
         return worstStudentForDiscipline;
+    }
+
+    public Integer getAverageGrade() {
+        Integer sumOfGrades = 0;
+        for (StudentGrade studentGrade : studentGradeList) {
+            sumOfGrades += studentGrade.getGrade();
+        }
+        return sumOfGrades / studentGradeList.size();
+    }
+
+    public StudentGrade getWorstGrade() {
+        StudentGrade worstStudent = new StudentGrade();
+        Integer lowestGrade = Integer.MAX_VALUE;
+        for (StudentGrade studentGrade : studentGradeList) {
+            if (studentGrade.getGrade() < lowestGrade) {
+                lowestGrade = studentGrade.getGrade();
+                worstStudent = studentGrade;
+            }
+        }
+        return worstStudent;
     }
 }

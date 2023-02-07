@@ -1,7 +1,6 @@
-package exercise1;
+package exercise1and2;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -14,5 +13,8 @@ public class Main {
         System.out.println("Max grade is: " + classroom.getMaxGrade());
         System.out.println("Average grade for Mathematics is: " + classroom.getAverageGrade("Mathematics"));
         System.out.println("Worst grade for Mathematics is: " + classroom.getWorstGrade("Mathematics"));
+
+        ReportGenerator reportGenerator = new ReportGenerator(classroom.getStudentGradeList());
+        reportGenerator.generateReport();
     }
 }

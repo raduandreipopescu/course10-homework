@@ -1,4 +1,4 @@
-package exercise1;
+package exercise1and2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,6 +21,7 @@ public class StudentsFromFile {
         while ((readLine = bufferedReader.readLine()) != null) {
             studentGradeList.add(splitReadLine(readLine));
         }
+        bufferedReader.close();
         return studentGradeList;
     }
 
