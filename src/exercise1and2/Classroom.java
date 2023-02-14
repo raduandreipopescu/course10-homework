@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Classroom {
-    private List<StudentGrade> studentGradeList;
+    private List<StudentGrade> studentGradeList = new ArrayList<>();
 
     public Classroom(List<StudentGrade> studentGradeList) {
-        this.studentGradeList = studentGradeList;
+        this.studentGradeList.addAll(studentGradeList);
     }
 
     public List<StudentGrade> getStudentGradeList() {
@@ -15,6 +15,9 @@ public class Classroom {
     }
 
     public List<Integer> getGradesForDiscipline(String discipline) {
+        if (discipline == null || discipline.equals("")) {
+            return new ArrayList<>();
+        }
         List<Integer> results = new ArrayList<>();
         for (StudentGrade studentGrade : studentGradeList) {
             if (discipline.equals(studentGrade.getDiscipline())) {
@@ -58,6 +61,18 @@ public class Classroom {
         return bestStudent;
     }
 
+    public static StudentGrade getMaxGradeForReport(List<StudentGrade> studentGrades) {
+        StudentGrade bestStudent = new StudentGrade();
+        Integer maxGrade = 0;
+        for (StudentGrade studentGrade : studentGrades) {
+            if (studentGrade.getGrade() > maxGrade) {
+                maxGrade = studentGrade.getGrade();
+                bestStudent = studentGrade;
+            }
+        }
+        return bestStudent;
+    }
+
     public Integer getAverageGrade(String discipline) {
         List<Integer> gradesForDiscipline = this.getGradesForDiscipline(discipline);
         Integer sumOfGrades = 0;
@@ -67,7 +82,7 @@ public class Classroom {
         return sumOfGrades / gradesForDiscipline.size();
     }
 
-    public StudentGrade getWorstGrade(String discipline) {
+    public StudentGrade getWorstGradeForReport(String discipline) {
         StudentGrade worstStudentForDiscipline = new StudentGrade();
         Integer lowestGrade = Integer.MAX_VALUE;
         for (StudentGrade studentGrade : studentGradeList) {
@@ -79,18 +94,18 @@ public class Classroom {
         return worstStudentForDiscipline;
     }
 
-    public Integer getAverageGrade() {
+    public static Integer getAverageGradeForReport(List<StudentGrade> studentGrades) {
         Integer sumOfGrades = 0;
-        for (StudentGrade studentGrade : studentGradeList) {
+        for (StudentGrade studentGrade : studentGrades) {
             sumOfGrades += studentGrade.getGrade();
         }
-        return sumOfGrades / studentGradeList.size();
+        return sumOfGrades / studentGrades.size();
     }
 
-    public StudentGrade getWorstGrade() {
+    public static StudentGrade getWorstGradeForReport(List<StudentGrade> studentGrades) {
         StudentGrade worstStudent = new StudentGrade();
         Integer lowestGrade = Integer.MAX_VALUE;
-        for (StudentGrade studentGrade : studentGradeList) {
+        for (StudentGrade studentGrade : studentGrades) {
             if (studentGrade.getGrade() < lowestGrade) {
                 lowestGrade = studentGrade.getGrade();
                 worstStudent = studentGrade;

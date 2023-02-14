@@ -12,9 +12,8 @@ public class Main {
         System.out.println("Max grade for Mathematics is: " + classroom.getMaxGrade("Mathematics"));
         System.out.println("Max grade is: " + classroom.getMaxGrade());
         System.out.println("Average grade for Mathematics is: " + classroom.getAverageGrade("Mathematics"));
-        System.out.println("Worst grade for Mathematics is: " + classroom.getWorstGrade("Mathematics"));
+        System.out.println("Worst grade for Mathematics is: " + classroom.getWorstGradeForReport("Mathematics"));
 
-        ReportGenerator reportGenerator = new ReportGenerator(classroom.getStudentGradeList());
-        reportGenerator.generateReport();
+        ReportGenerator.generateReport(classroom.getStudentGradeList());
     }
 }
